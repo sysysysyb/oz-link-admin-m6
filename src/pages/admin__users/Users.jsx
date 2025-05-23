@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { users } from '../../database/mockData';
 
 // 1. user.name을 클릭하면 /admin/users/:id로 이동되어야 합니다.
 
 function Users() {
+  const location = useLocation();
   return (
     <div>
       <h1>사용자 목록</h1>
@@ -21,7 +22,7 @@ function Users() {
           {users.map((user) => (
             <tr key={user.id}>
               <td>
-                <Link to="#">{user.name}</Link>
+                <Link to={`${user.id}`}>{user.name}</Link>
               </td>
               <td>{user.email}</td>
               <td>{user.status}</td>
